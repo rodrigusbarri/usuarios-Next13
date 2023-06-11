@@ -1,10 +1,21 @@
-export default function Users ({users}) {
-    
+"use client";
+import { useRouter } from "next/navigation";
+
+
+export default function Users({ users }) {
+
+  const router = useRouter()
+
   return (
     <>
-          <ul>
+      <ul>
         {users.map((user) => (
-          <li key={user.id}>
+          <li
+            key={user.id}
+            onClick={() => {
+              router.push(`/users/${user.id}`);
+            }}
+          >
             <div>
               <h5>
                 {user.first_name}
@@ -17,5 +28,5 @@ export default function Users ({users}) {
         ))}
       </ul>
     </>
-);  
+  );
 }
